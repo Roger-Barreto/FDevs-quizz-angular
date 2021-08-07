@@ -1,0 +1,45 @@
+.card{
+   width: 100%;
+   background-color: white;
+   padding: 20px;
+   border-radius: 20px;
+}
+
+h2{
+   font-family: sans-serif;
+   font-weight: Bold;
+   margin: 0 0 8px;
+   font-size: 16px;
+}
+p{
+   font-size: 14px;
+   margin: 0;
+   font-family: sans-serif;
+}
+
+.bar-wrapper{
+   margin-top: 16px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   span{
+      font-weight: bold;
+      font-family: sans-serif;
+   }
+}
+
+.bar{
+   width: calc(100% - 40px);
+   height: 16px;
+   background-color: #E1E5E3;
+   position: relative;
+   border-radius: 20px;
+   .fill{
+      border-radius: 20px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #04D361;
+   }
+}

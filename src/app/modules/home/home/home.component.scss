@@ -1,0 +1,56 @@
+.wrapper {
+   width: 100vw;
+   height: 100vh;
+   background: #F5F5FA;
+}
+
+header {
+   padding: 20px;
+   background: linear-gradient(
+      122.59deg,
+      rgba(0, 100, 0, 0.72) 0%,
+      #3cb371 69.5%
+   );
+   height: 12vh;
+   position: relative;
+   display: flex;
+   margin-bottom: 130px;
+   .usuario{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   p {
+      margin: 0;
+      color: white;
+      font-size: 18px;
+      font-family: sans-serif;
+   }  
+   img{
+      border: 2px solid white;
+      border-radius: 20px;
+      height: 80%;
+   }
+
+   home-indicador-conclusao{
+      width: 80%;
+      position: absolute;
+      left: 16px;
+      bottom: -100%;
+   }
+}
+
+section.botoes{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   padding: 0 20px;
+}
+
+.quizzes{
+   display: grid;
+   padding: 16px;
+   grid-template-columns: 1fr 1fr;
+   gap: 16px;
+}

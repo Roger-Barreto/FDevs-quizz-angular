@@ -1,0 +1,25 @@
+<div class="wrapper">
+   <header>
+      <div class="usuario">
+         <p>Olá, {{ usuario }}</p>
+         <img src="assets/img/usuario.png" alt="Foto de perfil" />
+      </div>
+      <home-indicador-conclusao></home-indicador-conclusao>
+   </header>
+   <main>
+      <section class="botoes">
+         <home-botao-nivel 
+         *ngFor="let nivel of niveis"
+         (handleClick)="filtrar($event)"
+         [nivel]="nivel"
+         >
+         </home-botao-nivel>
+      </section>
+      <section class="quizzes">
+         <home-card-quizz
+            *ngFor="let quizz of quizzes"
+            [quizz]="quizz"
+         ></home-card-quizz>
+      </section>
+   </main>
+</div>

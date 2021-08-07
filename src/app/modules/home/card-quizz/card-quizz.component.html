@@ -1,0 +1,10 @@
+<div (click)="abrirQuizz()" class="card">
+   <img [src]="quizz.imagemUrl" alt="">
+   <p>{{quizz.titulo}}</p>
+   <div class="bar-wrapper">
+      <span>{{perguntasRespondidas().length + 'de' + quizz.perguntas.length }}</span>
+      <div class="bar">
+         <div [style.width]="porcentagemRespondidas() + '%'" class="fill"></div>
+      </div>
+   </div>
+</div>
