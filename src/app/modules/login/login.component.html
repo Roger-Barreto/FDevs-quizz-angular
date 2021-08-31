@@ -1,0 +1,11 @@
+<div class="wrapper">
+   <img src="assets/img/logo.png" alt="FDEV'S QUIZZ">
+
+   <form (ngSubmit)="onSubmit()"> 
+      <input type="email" class="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+      <input type="password" class="senha"  [(ngModel)]="senha" [ngModelOptions]="{standalone: true}">
+
+      <button type="submit" >Entrar</button>
+      <p>não possui uma conta?<a [routerLink]="['/cadastrar']">Cadatre-se</a></p>
+   </form>
+</div>

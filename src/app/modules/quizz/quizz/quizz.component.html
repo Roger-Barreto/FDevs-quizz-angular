@@ -1,0 +1,55 @@
+<div class="wrapper">
+   <div class="indentificador-questao">
+      <p>Questão {{ indexQuestaoAtual() }}</p>
+      <p>{{ "de " + quizz.perguntas.length }}</p>
+   </div>
+   <div class="bar">
+      <div [style.width]="porcentagemRespondidas() + '%'" class="fill"></div>
+   </div>
+
+   <p class="titulo">{{ perguntaAtual.titulo }}</p>
+
+   <div class="alternativas">
+      <card-alternativa
+         *ngFor="let alternativa of perguntaAtual.alternativas"
+         [selecionada]="
+            alternativa.codigo == perguntaAtual.resposta?.codigoAlternativa
+         "
+         [alternativa]="alternativa"
+         (click)="selecionarAlternativa(alternativa.codigo)"
+      ></card-alternativa>
+   </div>
+
+   <div class="botoes">
+      <button (click)="pularAlternativa()" class="btn-pular">Pular</button>
+      <button
+         [style.background]="
+            !perguntaAtual.resposta ? 'rgba(4, 211, 97, 0.5)' : '#04d361'
+         "
+         (click)="confirmarAlternativa()"
+         class="btn-confirmar"
+      >
+         Confirmar
+      </button>
+   </div>
+</div>
+
+<!-- MODAL ACERTO -->
+
+<app-modal-resposta
+   (avancar)="avancar()"
+   [resposta]="respostaConfirmada"
+   [pergunta]="perguntaAtual"
+   *ngIf="respostaConfirmada"
+></app-modal-resposta>
+
+<!-- MODAL FIM DO QUIZZ -->
+
+<div class="modal-fim" *ngIf="fimQuizz">
+   <img src="assets/img/trofeu.png" alt="Troféu" />
+   <h2>Parabéns!</h2>
+   <p>Você concluiu</p>
+   <p class="nome-quizz">{{ quizz.titulo }}</p>
+   <p>com {{ perguntasCorretas().length }} de {{ quizz.perguntas.length }}</p>
+   <button [routerLink]="['/home']">Voltar ao início</button>
+</div>

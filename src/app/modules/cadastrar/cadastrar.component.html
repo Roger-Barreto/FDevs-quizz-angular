@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <h2>Cadastrar</h2>
+
+   <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+         <p>Nome</p>
+         <input
+            type="text"
+            class="nome"
+            [(ngModel)]="nome"
+            [ngModelOptions]="{ standalone: true }"
+         />
+      </div>
+      <div class="input-group">
+         <p>Sobrenome</p>
+         <input
+            type="text"
+            class="sobrenome"
+            [(ngModel)]="sobrenome"
+            [ngModelOptions]="{ standalone: true }"
+         />
+      </div>
+      <div class="input-group">
+         <p>Email</p>
+         <input
+            type="email"
+            class="email"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+         />
+      </div>
+      <div class="input-group">
+         <p>Senha</p>
+         <input
+            type="password"
+            class="senha"
+            [(ngModel)]="senha"
+            [ngModelOptions]="{ standalone: true }"
+         />
+      </div>
+
+      <div class="input-group">
+         <p>Telefone</p>
+         <input
+            type="number"
+            class="telefone"
+            [(ngModel)]="telefone"
+            [ngModelOptions]="{ standalone: true }"
+         />
+      </div>
+
+      <div class="input-group">
+         <p>Url Imagem de Perfil</p>
+         <input
+            type="text"
+            class="imagem"
+            [(ngModel)]="imagemUrl"
+            [ngModelOptions]="{ standalone: true }"
+         />
+      </div>
+      <button type="submit">Cadastrar</button>
+   </form>
+</div>

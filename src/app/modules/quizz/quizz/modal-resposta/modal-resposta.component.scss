@@ -1,0 +1,41 @@
+
+.modal-resposta{
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+
+   width: 100%;
+   height: 100%;
+   background-color: white;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+
+   p{
+      margin: 0;
+   }
+
+   .resposta{
+      font-weight: bold;
+      font-size: 32px;
+      margin: 8px 0;
+   }
+
+   .alternativa{
+      margin-bottom: 32px;
+   }
+
+   button{
+      background: #006400;
+      border-radius: 10px;
+      color: white;
+      padding: 12px 32px;
+      border: none;
+      font-size: 18px;
+   }
+}

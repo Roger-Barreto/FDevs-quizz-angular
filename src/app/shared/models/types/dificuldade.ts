@@ -1,5 +1,5 @@
 export type Dificuldade = {
    texto: string;
-   codigo: string; 
+   codigo: number; 
    cor: string;
  }

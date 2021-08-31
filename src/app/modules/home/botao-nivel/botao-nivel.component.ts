@@ -10,7 +10,7 @@ import { Dificuldade } from 'src/app/shared/models/types/dificuldade';
 export class BotaoNivelComponent implements OnInit {
   @Input() nivel: Dificuldade;
 
-  @Output() handleClick = new EventEmitter<string>()
+  @Output() handleClick = new EventEmitter<number>()
   constructor() { }
 
   ngOnInit(): void {

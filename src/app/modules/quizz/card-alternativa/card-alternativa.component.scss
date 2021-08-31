@@ -1,0 +1,37 @@
+.card {
+   background-color: white;
+   border: 1px solid #e1e1e5;
+   width: calc(100% - 20px);
+
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 8px;
+   padding: 16px 12px;
+   p {
+      color: #363636;
+      max-width: calc(100% - 30px);
+      margin: 0;
+   }
+   &.selecionada{
+      border-color: #B8DBCB;
+      background-color: #E1F5EC;
+      p{
+         color: #03AB4F;
+      }
+      .circulo {
+         background-color: #04D361;
+         box-shadow: 0px 4px 12px rgba(4, 211, 97, 0.4);
+      }
+   }
+}
+
+.circulo {
+   width: 24px;
+   height: 24px;
+   background-color: #fff;
+   border: 1px solid #e1e1e5;
+   border-radius: 50%;
+}
+

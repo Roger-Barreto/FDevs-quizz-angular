@@ -1,0 +1,13 @@
+<div class="modal-resposta">
+   <img
+      [src]=" resposta == 'acertou'
+            ? 'assets/img/modal/acertou.png'
+            : 'assets/img/modal/errou.png' "
+      [alt]="resposta"
+   />
+
+   <p class="resposta">{{resposta == 'acertou'? 'Acertou!' : 'Errou :/'}}</p>
+   <p class="alternativa">{{alternativaCorreta()}}</p>
+
+   <button (click)="avancar.emit('')">Avançar</button>
+</div>

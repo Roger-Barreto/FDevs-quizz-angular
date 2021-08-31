@@ -1,148 +1,60 @@
-import { Component, OnInit } from "@angular/core";
+import { QuizzesService } from './../../../core/services/quizzes.service';
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Dificuldade } from "src/app/shared/models/types/dificuldade";
 import { Quizz } from "src/app/shared/models/types/quizz";
+import { Subscription } from 'rxjs';
 
 @Component({
    selector: "app-home",
    templateUrl: "./home.component.html",
    styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
    public usuario: string = "Odézio";
+   private subscription: Subscription;
    public niveis: Dificuldade[] = [
       {
          texto: "Fácil",
-         codigo: "FACIL",
+         codigo: 1,
          cor: "#6363DB",
       },
       {
          texto: "Médio",
-         codigo: "MEDIO",
+         codigo: 2,
          cor: "#03AB4F",
       },
       {
          texto: "Difícil",
-         codigo: "DIFICIL",
+         codigo: 3,
          cor: "#E8891C",
       },
       {
          texto: "Expert",
-         codigo: "DIFICIL",
+         codigo: 4,
          cor: "#CC3750",
       },
    ];
 
-   public quizzes: Quizz[] = [
-      {
-         codigo: 1,
-         titulo: "Estrutura Banco de Dados",
-         nivel: "DIFICIL",
-         imagemUrl: "assets/img/programing.png",
-         perguntas: [
-            {
-               codigo: 1,
-               titulo: "O que é uma API RESTFull?",
-               alternativas: [
-                  {
-                     codigo: 1,
-                     titulo: "Application Programming Interface",
-                     correta: false,
-                  },
-                  {
-                     codigo: 2,
-                     titulo:
-                        "API que segue os padrões definidos pela arquitetura Rest",
-                     correta: true,
-                  },
-                  {
-                     codigo: 3,
-                     titulo: "Representational State Transfer",
-                     correta: false,
-                  },
-                  {
-                     codigo: 4,
-                     titulo:
-                        "É o caminho mais conhecido nas transferências de dados",
-                     correta: false,
-                  },
-               ],
-            },
-         ],
-      },
-      {
-         codigo: 1,
-         titulo: `Console App (.Net Core)`,
-         nivel: "DIFICIL",
-         imagemUrl: "assets/img/group.png",
-         perguntas: [
-            {
-               codigo: 1,
-               titulo: "O que é uma API RESTFull?",
-               resposta: {
-                  codigoAlternativa: 2,
-               },
-               alternativas: [
-                  {
-                     codigo: 1,
-                     titulo: "Application Programming Interface",
-                     correta: false,
-                  },
-                  {
-                     codigo: 2,
-                     titulo:
-                        "API que segue os padrões definidos pela arquitetura Rest",
-                     correta: true,
-                  },
-                  {
-                     codigo: 3,
-                     titulo: "Representational State Transfer",
-                     correta: false,
-                  },
-                  {
-                     codigo: 4,
-                     titulo:
-                        "É o caminho mais conhecido nas transferências de dados",
-                     correta: false,
-                  },
-               ],
-            },
-            {
-               codigo: 1,
-               titulo: "O que é uma API RESTFull?",
-               alternativas: [
-                  {
-                     codigo: 1,
-                     titulo: "Application Programming Interface",
-                     correta: false,
-                  },
-                  {
-                     codigo: 2,
-                     titulo:
-                        "API que segue os padrões definidos pela arquitetura Rest",
-                     correta: true,
-                  },
-                  {
-                     codigo: 3,
-                     titulo: "Representational State Transfer",
-                     correta: false,
-                  },
-                  {
-                     codigo: 4,
-                     titulo:
-                        "É o caminho mais conhecido nas transferências de dados",
-                     correta: false,
-                  },
-               ],
-            },
-         ],
-      },
-   ];
+   public quizzes: Quizz[] = [];
+   public quizzesOnDisplay: Quizz[] = [];
 
-   constructor() {}
 
-   ngOnInit(): void {}
+   constructor(private quizzesService: QuizzesService) {}
+
+   ngOnInit(): void {
+     this.subscription = this.quizzesService.getAll().subscribe(
+         response => {
+            this.quizzes = response.body;
+            this.quizzesOnDisplay = this.quizzes;
+         }
+      )
+   }
 
    filtrar(codigoNivel: string) {
-      console.log(codigoNivel);
+      this.quizzesOnDisplay = this.quizzes.filter(quizz => quizz.nivel = codigoNivel );
+   }
+
+   ngOnDestroy(){
+      this.subscription.unsubscribe();
    }
 }
